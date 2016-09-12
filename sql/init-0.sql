@@ -1,0 +1,10 @@
+CREATE DATABASE villes;
+
+\c villes
+
+CREATE TABLE villes(
+   ID    SERIAL PRIMARY KEY,
+   INSE  TEXT  NOT NULL,
+   NAME  TEXT  NOT NULL,
+   CP    TEXT  NOT NULL
+);
