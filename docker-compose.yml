@@ -7,3 +7,10 @@ services:
       - ./sql:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
+
+  front:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"

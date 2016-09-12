@@ -31,8 +31,8 @@ instance ToRow Ville where
 
 main :: IO ()
 main = do
-  c <- liftIO $ connect defaultConnectInfo { connectHost = "127.0.0.1", connectDatabase = "villes" }
-  scotty 80 $ do
+  c <- liftIO $ connect defaultConnectInfo { connectHost = "db", connectDatabase = "villes" }
+  scotty 3000 $ do
     get "/" $ do
       p <- params
       case p of
