@@ -43,7 +43,7 @@ main = do
           villes <- liftIO $ ville2cp c (TL.unpack ville)
           villes2json villes
         _ -> do
-          S.text $ "fuck!"
+          S.text $ "?cp=92320\n?ville=chatillon"
   where
     ville2cp c ville = query c "select inse,name,cp from villes where UPPER(name) LIKE (UPPER(?) || '%')" [(ville)] :: IO [Ville]
     cp2ville c cp = query c "select inse,name,cp from villes where cp = ?" [(cp)] :: IO [Ville]
