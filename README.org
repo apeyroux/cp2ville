@@ -4,7 +4,7 @@
 #+BEGIN_SRC sh
 docker-compose up
 #+END_SRC
-
+  
 * Build de l'image
 
 #+BEGIN_SRC sh
@@ -12,7 +12,6 @@ stack image container
 #+END_SRC
 
 * Init des datas
-
 #+BEGIN_SRC sh
 docker run -v /tmp/cvs:/tmp --link cp2ville_db_1:db \\
 --net cp2ville_default -it --rm \\
