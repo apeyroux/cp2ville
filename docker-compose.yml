@@ -12,6 +12,6 @@ services:
     image: 41px/cp2ville 
     depends_on:
       - db
-    command: /usr/local/bin/cp2ville
+    command: cp2ville
     ports:
       - "3000:3000"
