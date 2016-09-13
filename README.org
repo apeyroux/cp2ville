@@ -4,7 +4,7 @@
 #+BEGIN_SRC sh
 docker-compose up
 #+END_SRC
-
+  
 * Build de l'image
 
 #+BEGIN_SRC sh
@@ -13,6 +13,10 @@ stack image container
 
 * Init des datas
 
+Utilisation de https://github.com/41px/loadcp
+
 #+BEGIN_SRC sh
-stack exec runghc scripts/loaddata.hs
+docker run -v /tmp/cvs:/tmp --link cp2ville_db_1:db \\
+--net cp2ville_default -it --rm \\
+41px/loadcp loadcp cp2ville_db_1 /tmp/laposte_hexasmal.csv
 #+END_SRC
