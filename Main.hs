@@ -10,27 +10,29 @@ import Database.PostgreSQL.Simple.ToRow
 import Database.PostgreSQL.Simple.ToField
 import Network.HTTP.Types.Status
 import Data.Text.Lazy as TL
-import GHC.Generics
 
 data Ville = Ville { villeInse :: String
                    , villeName :: String
                    , villeLigne5 :: String
-                   , villeCP :: String } deriving (Show, Eq, Read, Generic)
+                   , villeAcheminement :: String
+                   , villeCP :: String } deriving (Show, Eq, Read)
 
 instance ToJSON Ville where
-  toJSON (Ville inse name ligne5 cp) =
-    object ["name"  .= name
-           , "ligne5" .= ligne5
-           , "inse" .= inse
-           , "cp"   .= cp]
+  toJSON (Ville inse name ligne5 acheminement cp) =
+    object ["nom"           .= name
+           , "ligne5"       .= ligne5
+           , "inse"         .= inse
+           , "acheminement" .= acheminement
+           , "cp"           .= cp]
 
 instance FromRow Ville where
-  fromRow = Ville <$> field <*> field <*> field <*> field
+  fromRow = Ville <$> field <*> field <*> field <*> field <*> field
 
 instance ToRow Ville where
   toRow d = [ toField (villeInse d)
             , toField (villeName d)
             , toField (villeLigne5 d)
+            , toField (villeAcheminement d)
             , toField (villeCP d)]
 
 main :: IO ()
@@ -49,8 +51,8 @@ main = do
         _ -> do
           S.text $ "usage:\n\n- ?cp=92320\n- ?ville=chatillon"
   where
-    ville2cp c ville = query c "select inse,name,cp,ligne5 from villes where UPPER(name) LIKE (UPPER(?) || '%')" [(ville)] :: IO [Ville]
-    cp2ville c cp = query c "select inse,name,cp,ligne5 from villes where cp = ?" [(cp)] :: IO [Ville]
+    ville2cp c ville = query c "select inse,name,ligne5,acheminement,cp from villes where UPPER(name) LIKE (UPPER(?) || '%')" [(ville)] :: IO [Ville]
+    cp2ville c cp = query c "select inse,name,ligne5,acheminement,cp from villes where cp = ?" [(cp)] :: IO [Ville]
     villes2json v = case v of
       [ville] -> S.json $ ville
       _ -> do

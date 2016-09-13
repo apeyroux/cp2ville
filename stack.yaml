@@ -8,6 +8,7 @@ packages:
 - '.'
 docker:
   enable: true
+  auto-pull: true
 extra-deps:
 - ssv-0.3
 - text-1.2.2.1

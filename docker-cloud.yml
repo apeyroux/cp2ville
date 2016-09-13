@@ -1,0 +1,12 @@
+db:
+  image: postgres
+  volumes:
+    - /data/cp2ville/sql:/docker-entrypoint-initdb.d/
+
+front:
+  image: 41px/cp2ville 
+  links:
+    - db
+  command: cp2ville
+  ports:
+    - "3000:3000"
