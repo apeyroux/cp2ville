@@ -16,3 +16,5 @@ executable          cp2ville
                   , aeson
                   , text
                   , extra
+                  , network
+                  , http-types

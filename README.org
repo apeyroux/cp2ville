@@ -1,0 +1,18 @@
+
+* Start
+
+#+BEGIN_SRC sh
+docker-compose up
+#+END_SRC
+
+* Build de l'image
+
+#+BEGIN_SRC sh
+stack image container
+#+END_SRC
+
+* Init des datas
+
+#+BEGIN_SRC sh
+stack exec runghc scripts/loaddata.hs
+#+END_SRC

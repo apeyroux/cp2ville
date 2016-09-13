@@ -9,8 +9,9 @@ services:
       - "5432:5432"
 
   front:
-    build: .
+    image: 41px/cp2ville 
     depends_on:
       - db
+    command: /usr/local/bin/cp2ville
     ports:
       - "3000:3000"

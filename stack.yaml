@@ -12,3 +12,8 @@ extra-deps:
 - ssv-0.3
 - text-1.2.2.1
 resolver: lts-6.15
+
+image:
+  container:
+    name: 41px/cp2ville
+    base: fpco/stack-run

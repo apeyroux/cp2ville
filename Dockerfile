@@ -1,10 +1,10 @@
-from debian
+from haskell
 
 EXPOSE 3000
 
-RUN apt update && apt upgrade -y && apt install -y libpq-dev
+# RUN apt update && apt upgrade -y && apt install -y libpq-dev
 
-COPY ./bin/cp2ville /usr/local/bin
-COPY ./bin/loaddata /usr/local/bin
+COPY ./scripts/loaddata.hs /usr/local/bin/loaddata
+COPY ./Main.hs /usr/local/bin/Main.hs
 
-CMD /usr/local/bin/cp2ville
+CMD /usr/local/bin/Main.hs
