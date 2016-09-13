@@ -12,6 +12,9 @@ stack image container
 #+END_SRC
 
 * Init des datas
+
+Utilisation de https://github.com/41px/loadcp
+
 #+BEGIN_SRC sh
 docker run -v /tmp/cvs:/tmp --link cp2ville_db_1:db \\
 --net cp2ville_default -it --rm \\
